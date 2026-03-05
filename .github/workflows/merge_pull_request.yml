@@ -10,7 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Harden the runner (Audit all outbound calls)
+      uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
+      with:
+        egress-policy: audit
+
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
       with:
         fetch-depth: 0
 
@@ -24,7 +29,7 @@ jobs:
         sleep 30
 
     - name: Approve pull request by GitHub-Actions bot
-      uses: actions/github-script@v2
+      uses: actions/github-script@4aed96e0ba636e3df2423e6887c9a83ef8522d6d # v2.1.0
       with:
         github-token: ${{secrets.PRAPPROVAL_SECRET}}
         script: |
@@ -36,7 +41,7 @@ jobs:
           });
 
     - name: Merge pull request for ${{ github.event.client_payload.ReleaseBranchName }}
-      uses: actions/github-script@v2
+      uses: actions/github-script@4aed96e0ba636e3df2423e6887c9a83ef8522d6d # v2.1.0
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |

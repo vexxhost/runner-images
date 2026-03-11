@@ -5,6 +5,10 @@ on:
     types: [merge-pr]
 
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   Merge_pull_request:
     runs-on: ubuntu-latest

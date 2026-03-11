@@ -11,6 +11,9 @@ defaults:
   run:
     shell: pwsh
 
+permissions:
+  contents: read
+
 jobs:
   Windows_2019:
     if: contains(github.event.pull_request.labels.*.name, 'CI windows-all') || contains(github.event.pull_request.labels.*.name, 'CI windows-2019')

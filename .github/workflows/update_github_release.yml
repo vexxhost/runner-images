@@ -5,6 +5,9 @@ on:
     types: [update-github-release]
 
 
+permissions:
+  contents: write
+
 jobs:
   Update_GitHub_release:
     runs-on: ubuntu-latest

@@ -11,6 +11,9 @@ defaults:
   run:
     shell: pwsh
 
+permissions:
+  contents: read
+
 jobs:
   Ubuntu_2004:
     if: contains(github.event.pull_request.labels.*.name, 'CI ubuntu-all') || contains(github.event.pull_request.labels.*.name, 'CI ubuntu-2004')
